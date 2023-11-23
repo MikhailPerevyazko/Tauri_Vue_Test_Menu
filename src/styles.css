@@ -1,5 +1,7 @@
 .container {
     justify-items:center ;
+    width: auto;
+    height: auto;
 }
 
 #select {
