@@ -11,7 +11,7 @@
       <option value="2">Two</option>
     </select>
 
-    <input id="input" type="text" >
+    <input id="input" type="text" placeholder="Select item" >
     
     <button id="button">Save</button>
   </div>
