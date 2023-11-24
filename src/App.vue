@@ -21,7 +21,7 @@ function inputSignal(e) {
     <select id="select" @change="inputSignal" :value="selected">
         <option v-for = "option in options" :value="option.id">{{ option.name }}</option>
     </select>
-    <input id="input" type="text" :value="selected" placeholder="Select item"/>
+    <input id="input" type="text" :value="selected">
     <button id="button">Save</button>
   </div>
 </template>
