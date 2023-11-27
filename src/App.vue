@@ -4,12 +4,12 @@ import { save } from '@tauri-apps/api/dialog';
 import { ref } from 'vue';
 import { invoke } from "@tauri-apps/api/tauri";
 
-const selected = ref(0);
+const selected = ref('enter');
 const options = [
-  { name: 'select text', id: 0 },
-  { name: 'book1', id: 1 },
-  { name: 'book2', id: 2 },
-  { name: 'book3', id: 3 }
+  { name: 'select text', id: 'enter' },
+  { name: 'book1', id: 'a'} ,
+  { name: 'book2', id: 'b'},
+  { name: 'book3', id: 'c'}
 ];
 
 const message = ref(selected);
