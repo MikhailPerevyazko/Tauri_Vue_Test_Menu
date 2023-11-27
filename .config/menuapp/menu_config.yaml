@@ -1,9 +1,0 @@
-menu:
-  - name: "select text"
-    value: "enter"
-  - name: "book1"
-    value: "a"
-  - name: "book2"
-    value: "b"
-  - name: "book3"
-    value: "c"

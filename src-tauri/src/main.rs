@@ -2,6 +2,8 @@
 
 use tauri::Manager;
 use std::fs;
+use serde::{Deserialize, Serialize};
+use serde_yaml::to_string;
 
 fn main() {
     tauri::Builder::default()
@@ -14,7 +16,7 @@ fn main() {
             }
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![save_file])
+        .invoke_handler(tauri::generate_handler![save_file, open_menu])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
@@ -22,4 +24,18 @@ fn main() {
 #[tauri::command]
 fn save_file(path: String, contents: String) {
     fs::write(path, contents).unwrap();
+}
+#[derive(Serialize, Deserialize)]
+struct Menu {
+    name: String,
+    word: String,
+}
+
+fn open_menu() {
+    let menu = Menu{};
+    //    /home/Mikhail/.config/menuapp/menu_config.yaml'}
+
+    let serialized = serde_yaml::to_string(&menu).unwrap();
+
+    
 }
