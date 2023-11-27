@@ -1,6 +1,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")] // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 
 use tauri::Manager;
+use std::fs;
 
 fn main() {
     tauri::Builder::default()
@@ -13,15 +14,12 @@ fn main() {
             }
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![])
+        .invoke_handler(tauri::generate_handler![save_file])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
 
-use serde::{Deserialize, Serialize};
-#[derive(Serialize, Deserialize, Debug)]
-
-struct ItemsInput {
-    x: String,
-    y: String,
+#[tauri::command]
+fn save_file(path: String, contents: String) {
+    fs::write(path, contents).unwrap();
 }
