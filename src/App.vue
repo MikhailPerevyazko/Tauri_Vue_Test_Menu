@@ -12,7 +12,7 @@ const options = [
   { name: 'book3', id: 3 }
 ];
 
-const message = ref("selected");
+const message = ref(selected);
 
 const saveFileContents = async () => {
   try {
