@@ -1,18 +1,23 @@
 <script setup>
 
 import { save } from '@tauri-apps/api/dialog';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { invoke } from "@tauri-apps/api/tauri";
 
 const selected = ref('enter');
-const options = [
-  { name: 'select text', id: 'enter' },
-  { name: 'book1', id: 'a'} ,
-  { name: 'book2', id: 'b'},
-  { name: 'book3', id: 'c'}
-];
+const options = ref([]);
 
 const message = ref(selected);
+
+onMounted(()=>{
+  invoke('menu_open').then((obj)=>{
+    
+    const menu=JSON.parse(obj);
+    options.value = menu.menu;
+    console.log(options.value);
+  })
+})
+
 
 const saveFileContents = async () => {
   try {
@@ -30,7 +35,7 @@ const saveFileContents = async () => {
   <div class="container">
 
     <select id="select" v-model="selected">
-        <option v-for = "option in options" :value="option.id">{{ option.name }}</option>
+        <option v-for = "option in options" :value="option.name">{{ option.name }}</option>
     </select>
 
     <input id="input" type="text" v-model="selected">
