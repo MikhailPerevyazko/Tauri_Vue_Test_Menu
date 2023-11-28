@@ -6,15 +6,13 @@ import { invoke } from "@tauri-apps/api/tauri";
 
 const selected = ref('enter');
 const options = ref([]);
-
 const message = ref(selected);
 
-onMounted(()=>{
+onMounted(()=>{                                   //монтируем функцию из файла main.rs
   invoke('menu_open').then((obj)=>{
     
-    const menu=JSON.parse(obj);
+    const menu=JSON.parse(obj);                   //парсим json 
     options.value = menu.menu;
-    console.log(options.value);
   })
 })
 

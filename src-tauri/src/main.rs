@@ -8,6 +8,7 @@ use std::env;
 use std::fs;
 use std::path::PathBuf;
 use tauri::Manager;
+
 fn main() {
     let args = Args::parse();
     let home_dir = std::env::var("HOME").unwrap();
